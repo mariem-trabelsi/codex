@@ -6,21 +6,28 @@
    <div class="col-md-9 layout">
       <div class="row">
         <br><br>
-        <h1 style="text-align:center">Best Articles</h1>
+        <h1 style="text-align:center">Codex Articles</h1>
         <br><br>
-        <div class="card custom-card" style="width:18rem; height:23em" *ngFor="let article of AllArticles.articles">
+    <!-- <div class="card custom-card" style="width:18rem; height:23em" *ngFor="let article of AllArticles.articles">
             <img src={{article.urlToImage}} class="card-img-top" alt="...">
             <div class="card-body">
                 <div class="title_content">
                 <h5 class="card-title limited-text">{{ article.title }}</h5>
                 <p class="card-text limited-content">{{ article.content }}</p>
-             
-                    <a href={{article.url}} class="btn custom-btn"> Read more</a> <i class="fa fa-thumbs-up"></i>
-                   
-              
+                <a href={{article.url}} class="btn custom-btn"> Read more</a> <i class="fa fa-thumbs-up"></i>
             </div>
         </div>
+    </div> -->
+    <div class="card mb-3" *ngFor="let article of AllArticles.articles">
+        <img src={{article.urlToImage}}  class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ article.title }}</h5>
+          <p class="card-text">{{ article.content }}</p>
+          <p class="card-text"><small class="text-body-secondary">Authred by {{ article.author}} &ensp; [Published at {{ article.publishedAt | date: 'MM/dd/yyyy' }} ]</small></p>
+          <a href={{article.url}}>Read more</a>
+        </div>
     </div>
+      
     </div>
    
     
