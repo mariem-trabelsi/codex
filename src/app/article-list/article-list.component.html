@@ -1,24 +1,33 @@
 <div class="container">
-<br>
-<div class="col-md-8">
-   <h1 style="text-align:center">Best Articles</h1>
 
-    <div class="row">
-      <div class="card custom-card" style="width:17rem; height:20em" *ngFor="let article of AllArticles.articles">
-        <img src={{article.urlToImage}} class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title limited-text">{{ article.title }}</h5>
-          <!-- <p class="card-text">{{ article.content }}</p> -->
-          <a href={{article.url}} class="btn custom-btn"> Read more</a>
-          <i class="fa fa-thumbs-up"></i>
+ <div class="row">
+   
+
+   <div class="col-md-9 layout">
+      <div class="row">
+        <br><br>
+        <h1 style="text-align:center">Best Articles</h1>
+        <br><br>
+        <div class="card custom-card" style="width:18rem; height:23em" *ngFor="let article of AllArticles.articles">
+            <img src={{article.urlToImage}} class="card-img-top" alt="...">
+            <div class="card-body">
+                <div class="title_content">
+                <h5 class="card-title limited-text">{{ article.title }}</h5>
+                <p class="card-text limited-content">{{ article.content }}</p>
+             
+                    <a href={{article.url}} class="btn custom-btn"> Read more</a> <i class="fa fa-thumbs-up"></i>
+                   
+              
+            </div>
         </div>
-      </div>
     </div>
     </div>
+   
     
+    <div class="col-md-3"> 
+    </div> 
+
+ </div>
 </div>
 
-<div class="col-md-4">
-     pubb
-    
-</div>
+
