@@ -6,31 +6,29 @@
     max-height: min-content;
   }
   
-.custom-btn{
-    background-color: rgb(240, 231, 54);
-    color: #000;
-    border-radius: 4px 8px;   
-    font-size: medium;
+
+.icon{
+    font-size: 18px;
 }
 
-.limited-text {
-           /*Empêche le texte de passer à la ligne */
-    overflow: hidden;            /* Cache le texte qui dépasse */
-    text-overflow: ellipsis;     /* Ajoute un point de suspension (...) pour indiquer le texte coupé */
-    max-height: 150px;            /* Définissez la largeur maximale à laquelle le texte peut s'étendre */
- }
-
- .limited-content{
-    overflow: hidden;            /* Cache le texte qui dépasse */
-    text-overflow: ellipsis;     /* Ajoute un point de suspension (...) pour indiquer le texte coupé */
-    max-height: 50px;  
-    word-wrap: break-word;
-    
- }
-
-.actions{
-   display: block;
-   flex-direction: column-reverse;
+.icon:hover{
+    color:rgb(244, 220, 69);
 }
 
+.col-1 {
+ justify-content: space-between;
+}
 
+li  a {
+    color:rgb(244, 220, 69);
+    font-weight: bolder;
+}
+
+li a:hover{
+    color:#fff
+}
+
+.codex{
+    font-size: 25px;
+    font-weight: 800
+}
