@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../Services/articles.service';
 import { FormControl } from '@angular/forms';
-import { Observable, map, startWith } from 'rxjs';
+
 
 interface Article {
   author: string;
@@ -20,30 +20,68 @@ interface Article {
 })
 export class ArticleListComponent implements OnInit {
 
-  AllArticles! : Article[];
+  AllArticles: Article[]=[];
   search!: string;
   myControl = new FormControl('', []);
-  filteredOptions!: Observable<Article[]>;
-  constructor(private articleService :ArticlesService) { }
+  filteredArticles: Article[] = [];
+  sortOrder: 'ascending' | 'descending' = 'ascending';
+
+  constructor(private articleService: ArticlesService) {}
 
   ngOnInit(): void {
-    this.getArticles()  
+    this.getArticles();
   }
 
   getArticles() {
-    this.articleService.getArticles().subscribe( (data) =>{
-      this.AllArticles = data.articles.slice(20,40)
-       console.log(this.AllArticles)
-    })
+    this.articleService.getArticles().subscribe((data) => {
+      this.AllArticles = data.articles.slice(20, 40);
+      this.filteredArticles = this.AllArticles
+    });
+    
   }
 
- filter (value: string): Article[] {
-  const filterValue = value.toLowerCase();
-  return this.AllArticles.filter(
-    (article) =>
-    article.description.toLowerCase().includes(filterValue) ||
-    article.author.toLowerCase().includes(filterValue)||
-    article.title.toLowerCase().includes(filterValue)
-  );
+  onSearchChange() {
+   
+    const searchTerm = this.myControl.value.toLowerCase().trim();
+    if (!searchTerm) {
+      this.filteredArticles = this.AllArticles
+    } else {
+      this.filteredArticles = this.AllArticles.filter(
+        (article) =>
+          article.description.toLowerCase().includes(searchTerm) ||
+          article.author.toLowerCase().includes(searchTerm) ||
+          article.title.toLowerCase().includes(searchTerm)
+      );
+    }
+  }
+
+  sortByDateAscending() {
+    this.filteredArticles.sort((a, b) => {
+      const dateA: Date = new Date(a.publishedAt);
+      const dateB: Date = new Date(b.publishedAt);
+      return dateA.getTime() - dateB.getTime();
+    });
+  }
+  
+  sortByDateDescending() {
+    this.filteredArticles.sort((a, b) => {
+      const dateA: Date = new Date(a.publishedAt);
+      const dateB: Date = new Date(b.publishedAt);
+      return dateB.getTime() - dateA.getTime();
+    });
+  }
+
+  updateSorting() {
+    if (this.sortOrder === 'ascending') {
+      this.sortByDateAscending();
+    } else {
+      this.sortByDateDescending();
+    }
+  }
 }
-}
+
+
+
+
+
+

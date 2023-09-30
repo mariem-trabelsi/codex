@@ -40,13 +40,24 @@
     <div class="col-md-2"></div>
    <div class="col-md-8 layout">
       
-      
-        <mat-form-field class="example-full-width" style="margin-top:10px">
-            <mat-label>Type here ..</mat-label>
-            <input  type="text" matInput [formControl]="myControl">
-            <mat-icon matSuffix class="search-icon">search</mat-icon>
-        </mat-form-field>
-        <button (click)="filter(myControl.value)">ok</button>
+      <!-- Add sorting buttons -->
+      <mat-form-field appearance="fill" style="margin-right:10px; width:30%">
+        <mat-label>Sort By</mat-label>
+        <mat-select [(value)]="sortOrder" (selectionChange)="updateSorting()">
+          <mat-option value="ascending">Ascending</mat-option>
+          <mat-option value="descending">Descending</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+<!-- Rest of your HTML template remains the same -->
+
+    <mat-form-field class="example-full-width"  appearance="fill" style="margin-top: 10px">
+        <mat-label>Type here for search ..</mat-label>
+        <input matInput type="text" [formControl]="myControl" (input)="onSearchChange()">
+        <mat-icon matSuffix class="search-icon">search</mat-icon>
+      </mat-form-field>
+
+        <!-- <button class="btn btn-primary" (click)="filter('albert')">ok</button> -->
           <div class="row">
         <!-- <h1 style="text-align:center">Codex Articles</h1> -->
         
@@ -62,7 +73,7 @@
     </div> -->
     
     <div class="scrollbar">
-    <div class="card mb-3" *ngFor="let article of AllArticles">
+     <div class="card mb-3 scrollbar1 " *ngFor="let article of filteredArticles">
         <img src={{article.urlToImage}}  class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">{{ article.title }}</h5>
@@ -82,6 +93,9 @@
         </div>
         </div>
     </div>
+    <div *ngIf="filteredArticles.length === 0">
+        No articles found.
+      </div>
     </div>
     <mat-paginator [length]="100"
               [pageSize]="10"
@@ -97,5 +111,6 @@
 
  </div>
 </div>
+
 
 
