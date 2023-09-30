@@ -1,116 +1,114 @@
 <div style="display:flex">
     <p class="codex">CODEX</p>
-    
 </div>
 
 <ul class="nav justify-content-start" style="background-color:#000;height:60px">
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">News</a>
+        <a class="nav-link active" aria-current="page" href="#">News</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Reviews</a>
+        <a class="nav-link" href="#">Reviews</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Gaming</a>
+        <a class="nav-link" href="#">Gaming</a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="#">Podcasts</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">Deals</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">Tomorrow</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">Guidance</a>
-      </li>
-    <li class="nav-item">
-      <a class="nav-link disabled">Entertainment</a>
+    <li class="nav-item d-sm-none">
+        <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </a>
     </li>
 </ul>
 
+<!-- <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Podcasts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Deals</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Tomorrow</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Guidance</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Entertainment</a>
+        </li>
+    </ul>
+</div> -->
+
+
 <div class="container">
 
- <div class="row">
-    <div class="col-md-2"></div>
-   <div class="col-md-8 layout">
-      
-      <!-- Add sorting buttons -->
-      <mat-form-field appearance="fill" style="margin-right:10px; width:30%">
-        <mat-label>Sort By</mat-label>
-        <mat-select [(value)]="sortOrder" (selectionChange)="updateSorting()">
-          <mat-option value="ascending">Ascending</mat-option>
-          <mat-option value="descending">Descending</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-<!-- Rest of your HTML template remains the same -->
-
-    <mat-form-field class="example-full-width"  appearance="fill" style="margin-top: 10px">
-        <mat-label>Type here for search ..</mat-label>
-        <input matInput type="text" [formControl]="myControl" (input)="onSearchChange()">
-        <mat-icon matSuffix class="search-icon">search</mat-icon>
-      </mat-form-field>
-
-        <!-- <button class="btn btn-primary" (click)="filter('albert')">ok</button> -->
-          <div class="row">
-        <!-- <h1 style="text-align:center">Codex Articles</h1> -->
-        
-    <!-- <div class="card custom-card" style="width:18rem; height:23em" *ngFor="let article of AllArticles.articles">
-            <img src={{article.urlToImage}} class="card-img-top" alt="...">
-            <div class="card-body">
-                <div class="title_content">
-                <h5 class="card-title limited-text">{{ article.title }}</h5>
-                <p class="card-text limited-content">{{ article.content }}</p>
-                <a href={{article.url}} class="btn custom-btn"> Read more</a> <i class="fa fa-thumbs-up"></i>
-            </div>
+    <div class="row">
+        <div class="col-md-2">
+            <ul *ngFor=" let article of favoris;  let i = index" >
+                <li>{{article.title}}</li>
+            </ul>
         </div>
-    </div> -->
-    
-    <div class="scrollbar">
-     <div class="card mb-3 scrollbar1 " *ngFor="let article of filteredArticles">
-        <img src={{article.urlToImage}}  class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">{{ article.title }}</h5>
-          <p class="card-text">{{ article.content }}</p>
-          <p class="card-text"><small class="text-body-secondary">Authred by {{ article.author}} &ensp; [Published at {{ article.publishedAt | date: 'MM/dd/yyyy' }} ]</small></p>
-          <div class="row justify-content-end">
-          <div class="row justify-content-end">
-            <div class="col-11">
-                 <a class="btn btn-warning" href={{article.url}}>Read more</a>
+
+        <div class="col-md-8 layout">
+            <!-- Add sorting buttons -->
+            <mat-form-field appearance="fill" style="margin-right:10px; width:30%">
+                <mat-label>Sort By</mat-label>
+                <mat-select [(value)]="sortOrder" (selectionChange)="updateSorting()">
+                    <mat-option value="ascending">Ascending</mat-option>
+                    <mat-option value="descending">Descending</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- Rest of your HTML template remains the same -->
+
+            <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 25px">
+                <mat-label>Type here for search ..</mat-label>
+                <input matInput type="text" [formControl]="myControl" (input)="onSearchChange()">
+                <mat-icon matSuffix class="search-icon">search</mat-icon>
+            </mat-form-field>
+            <div class="row">
+                <!-- <h1 style="text-align:center">Codex Articles</h1> -->
+
+
+                <div class="scrollbar">
+                    <div class="card mb-3 scrollbar1 " *ngFor="let article of filteredArticles;  let i = index">
+                        <img src={{article.urlToImage}} class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <p class="card-text">{{ article.content }}</p>
+                            <p class="card-text"><small class="text-body-secondary">Authred by {{ article.author}}
+                                    &ensp; [Published at {{ article.publishedAt | date: 'MM/dd/yyyy' }} ]</small></p>
+                            <div class="row justify-content-end">
+                                <div class="row justify-content-end">
+                                    <div class="col-11">
+                                        <a class="btn btn-warning" href={{article.url}}>Read more</a>
+                                    </div>
+                                    <div class="col-1" style="margin-top:20px" style="display:flex;flex-direction:row">
+                                        <mat-icon style="margin-right:5px" (click)="toggleBookmark(i)">
+                                            {{ isBookmarked ? 'turned_in'  : 'bookmark_border' }}
+                                        </mat-icon>
+                                          
+                                        <mat-icon>share</mat-icon>
+                                    </div>
+                                    <div class="col-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="filteredArticles.length === 0">
+                        No articles found.
+                    </div>
+                </div>
+                <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+                    aria-label="Select page">
+                </mat-paginator>
+
             </div>
-            <div class="col-1" style="margin-top:20px">
-                <i class="fa fa-thumbs-up icon btn-warning" style="margin-right:5px"></i>
-                <i class="fa fa-share icon"></i>
+
+
+            <div class="col-md-2">
             </div>
-            <div class="col-1"></div>
-          </div>
-        </div>
+
         </div>
     </div>
-    <div *ngIf="filteredArticles.length === 0">
-        No articles found.
-      </div>
-    </div>
-    <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-    </mat-paginator>
-
-    </div>
-   
-    
-    <div class="col-md-2"> 
-    </div> 
-
- </div>
-</div>
-
-
-
