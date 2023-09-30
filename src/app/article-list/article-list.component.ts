@@ -8,7 +8,9 @@ import { ArticlesService } from '../Services/articles.service';
 })
 export class ArticleListComponent implements OnInit {
 
-  AllArticles :any[]=[]
+  AllArticles : any ;
+ 
+
   constructor(private articleService :ArticlesService) { }
 
   ngOnInit(): void {
@@ -19,8 +21,7 @@ export class ArticleListComponent implements OnInit {
     this.articleService.getArticles().subscribe( (data) =>{
       this.AllArticles = data
        console.log(this.AllArticles)
-    }
-       
-    )
+    })
   }
+
 }
