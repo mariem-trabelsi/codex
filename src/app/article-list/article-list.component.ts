@@ -12,6 +12,7 @@ export class ArticleListComponent implements OnInit {
   constructor(private articleService :ArticlesService) { }
 
   ngOnInit(): void {
+    this.getArticles() 
   }
 
   getArticles() {
