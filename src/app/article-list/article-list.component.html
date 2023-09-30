@@ -3,7 +3,7 @@
     
 </div>
 
-<ul class="nav justify-content-center" style="background-color:#000;height:60px">
+<ul class="nav justify-content-start" style="background-color:#000;height:60px">
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">News</a>
     </li>
@@ -39,10 +39,17 @@
  <div class="row">
     <div class="col-md-2"></div>
    <div class="col-md-8 layout">
-      <div class="row">
-        <br><br>
-        <h1 style="text-align:center">Codex Articles</h1>
-        <br><br>
+      
+      
+        <mat-form-field class="example-full-width" style="margin-top:10px">
+            <mat-label>Type here ..</mat-label>
+            <input  type="text" matInput [formControl]="myControl">
+            <mat-icon matSuffix class="search-icon">search</mat-icon>
+        </mat-form-field>
+        <button (click)="filter(myControl.value)">ok</button>
+          <div class="row">
+        <!-- <h1 style="text-align:center">Codex Articles</h1> -->
+        
     <!-- <div class="card custom-card" style="width:18rem; height:23em" *ngFor="let article of AllArticles.articles">
             <img src={{article.urlToImage}} class="card-img-top" alt="...">
             <div class="card-body">
@@ -53,23 +60,20 @@
             </div>
         </div>
     </div> -->
-    <div class="card mb-3" *ngFor="let article of AllArticles.articles">
-        <img src={{article.urlToImage}}  class="card-img-top" alt="...">
+    
+    <div class="scrollbar">
+    <div class="card mb-3" *ngFor="let article of AllArticles">
+        <img src={{article.urlToImage}}  class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">{{ article.title }}</h5>
           <p class="card-text">{{ article.content }}</p>
           <p class="card-text"><small class="text-body-secondary">Authred by {{ article.author}} &ensp; [Published at {{ article.publishedAt | date: 'MM/dd/yyyy' }} ]</small></p>
           <div class="row justify-content-end">
-          <!-- <a href={{article.url}}>Read more</a>
-          <span >
-          <i class="fa fa-thumbs-up" style="font-size: 16px;margin-left: 10px"></i>
-          <i class="fa fa-share" style="font-size: 16px; margin-left: 10px;"></i>
-          </span> -->
           <div class="row justify-content-end">
             <div class="col-11">
                  <a class="btn btn-warning" href={{article.url}}>Read more</a>
             </div>
-            <div class="col-1">
+            <div class="col-1" style="margin-top:20px">
                 <i class="fa fa-thumbs-up icon btn-warning" style="margin-right:5px"></i>
                 <i class="fa fa-share icon"></i>
             </div>
@@ -78,7 +82,13 @@
         </div>
         </div>
     </div>
-      
+    </div>
+    <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+    </mat-paginator>
+
     </div>
    
     

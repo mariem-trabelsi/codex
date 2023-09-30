@@ -32,3 +32,36 @@ li a:hover{
     font-size: 25px;
     font-weight: 800
 }
+
+.scrollbar::-webkit-scrollbar {
+    display:block;
+    width: 10px;
+  }
+  
+  .scrollbar {
+    min-height: 65vh;
+    max-height: 65vh;
+    overflow-y: scroll;
+    padding-right: 1vw;
+  }
+  
+  
+  
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 8px;
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(244, 220, 69);
+  }
+
+  .example-full-width {
+    width: 65%;
+  }
+
+  .search-icon{
+    color: #757575;
+    position: relative;
+    top: 8px;
+  }
