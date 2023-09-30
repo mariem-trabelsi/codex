@@ -88,15 +88,23 @@ export class ArticleListComponent implements OnInit {
     this.isBookmarked = !this.isBookmarked;
     if(this.isBookmarked){
      this.favoris.push(this.AllArticles[index])
-     this.openSnackBar()
+     this.openSnackBar();
     }
    else
-    this.favoris.splice(index, 1)
-    console.log(this.favoris)
+    {this.favoris.splice(index, 1)
+    this.openSnackBar1();
+    console.log(this.favoris);
+    }
   }
 
   openSnackBar() {
     this._snackBar.open(' New article is saved!', 'Splash', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
+  openSnackBar1() {
+    this._snackBar.open(' This article is removed!', 'Splash', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
     });

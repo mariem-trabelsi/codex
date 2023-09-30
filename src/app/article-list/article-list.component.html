@@ -44,14 +44,17 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-2">
-            <ul *ngFor=" let article of favoris;  let i = index" >
-                <li>{{article.title}}</li>
+        <div class="col-md-2" style="margin-top: 30px">
+            <h3 *ngIf="this.favoris.length !== 0">Favorites</h3>
+            <ul *ngFor="let article of favoris; let i = index">
+                <li class="article">
+                  <mat-icon style="color: rgb(244, 220, 69); margin-top: 8px">star</mat-icon>
+                  <a [href]="AllArticles[i].url" target="_blank">{{ article.title }}</a>
+                </li>
             </ul>
         </div>
 
         <div class="col-md-8 layout">
-            <!-- Add sorting buttons -->
             <mat-form-field appearance="fill" style="margin-right:10px; width:30%">
                 <mat-label>Sort By</mat-label>
                 <mat-select [(value)]="sortOrder" (selectionChange)="updateSorting()">
@@ -60,7 +63,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <!-- Rest of your HTML template remains the same -->
+            
 
             <mat-form-field class="example-full-width" appearance="fill" style="margin-top: 25px">
                 <mat-label>Type here for search ..</mat-label>
