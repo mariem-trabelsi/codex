@@ -1,0 +1,23 @@
+
+.custom-card {
+    margin-right: 10px; 
+    margin-left: 10px; 
+    margin-bottom:10px;
+  }
+
+.card-text{
+  text-size-adjust:inherit ;
+}
+  
+.custom-btn{
+    background-color: rgb(220, 212, 54);
+    color: #000;
+    border-radius: 4px 8px;   
+}
+
+.limited-text {
+    white-space: nowrap;         /* Empêche le texte de passer à la ligne */
+    overflow: hidden;            /* Cache le texte qui dépasse */
+    text-overflow: ellipsis;     /* Ajoute un point de suspension (...) pour indiquer le texte coupé */
+    max-width: 200px;            /* Définissez la largeur maximale à laquelle le texte peut s'étendre */
+  }
