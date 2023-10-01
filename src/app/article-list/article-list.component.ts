@@ -57,6 +57,7 @@ export class ArticleListComponent implements OnInit {
         this.l= ""
         this.filteredArticles = this.AllArticles }
     } else {
+      this.currentPage = 1
       this.filteredArticles = this.AllArticles.filter(
         (article) =>
           article.description.toLowerCase().includes(searchTerm) ||

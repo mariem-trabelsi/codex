@@ -105,10 +105,10 @@ li a:hover{
 
   .btn1{
     font-size: 12px;
+    border: none;
     border-radius: 5px;
   }
 
   .btn1:hover{
-   
- color: rgb(244, 220, 69);
+    color: rgb(244, 220, 69);
   }
