@@ -114,6 +114,15 @@ export class ArticleListComponent implements OnInit {
       verticalPosition: this.verticalPosition,
     });
   }
+
+  itemsPerPage = 5; 
+  currentPage = 1;
+
+  changePage(newPage: number) {
+    this.currentPage = newPage;
+  }
+ 
+
 }
 
 

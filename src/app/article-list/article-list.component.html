@@ -76,7 +76,7 @@
 
                 <div class="scrollbar">
                     <div  class="found" *ngIf="l">{{l}} article<span *ngIf="l>1">s are</span> <span *ngIf="l==1">&ensp; is</span>  found </div>
-                    <div class="card mb-3 scrollbar1 " *ngFor="let article of filteredArticles;  let i = index">
+                    <div class="card mb-3 scrollbar1 " *ngFor="let article of filteredArticles.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);  let i = index">
                         <img src={{article.urlToImage}} class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">{{ article.title }}</h5>
@@ -104,10 +104,12 @@
                         No articles found.
                     </div>
                 </div>
-                <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
-                    aria-label="Select page">
-                </mat-paginator>
-
+                <div class="pagination">
+                    
+                    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1"><mat-icon>fast_rewind</mat-icon></button>
+                    <span>Page {{ currentPage }} sur {{ filteredArticles.length / itemsPerPage }}</span>
+                    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === (filteredArticles.length / itemsPerPage)"><mat-icon >fast_forward</mat-icon></button>
+                </div>
             </div>
 
 
