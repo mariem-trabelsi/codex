@@ -75,6 +75,7 @@
 
 
                 <div class="scrollbar">
+                    <div  class="found" *ngIf="l">{{l}} article<span *ngIf="l>1">s are</span> <span *ngIf="l==1">&ensp; is</span>  found </div>
                     <div class="card mb-3 scrollbar1 " *ngFor="let article of filteredArticles;  let i = index">
                         <img src={{article.urlToImage}} class="card-img-top">
                         <div class="card-body">

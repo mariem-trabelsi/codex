@@ -30,7 +30,8 @@ export class ArticleListComponent implements OnInit {
   isBookmarked = false;
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-  
+  l! :any; 
+
   constructor(private articleService: ArticlesService,private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
@@ -49,7 +50,9 @@ export class ArticleListComponent implements OnInit {
    
     const searchTerm = this.myControl.value.toLowerCase().trim();
     if (!searchTerm) {
-      this.filteredArticles = this.AllArticles
+      {
+        this.l= ""
+        this.filteredArticles = this.AllArticles }
     } else {
       this.filteredArticles = this.AllArticles.filter(
         (article) =>
@@ -57,6 +60,8 @@ export class ArticleListComponent implements OnInit {
           article.author.toLowerCase().includes(searchTerm) ||
           article.title.toLowerCase().includes(searchTerm)
       );
+       this.l = this.filteredArticles.length
+
     }
   }
 

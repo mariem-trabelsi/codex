@@ -97,3 +97,8 @@ li a:hover{
     -webkit-box-orient: vertical;
     cursor: pointer;
   }
+
+  .found{
+    color:#555;
+    text-align: right;
+  }
