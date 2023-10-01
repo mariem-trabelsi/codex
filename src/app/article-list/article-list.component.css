@@ -102,3 +102,13 @@ li a:hover{
     color:#555;
     text-align: right;
   }
+
+  .btn1{
+    font-size: 12px;
+    border-radius: 5px;
+  }
+
+  .btn1:hover{
+   
+ color: rgb(244, 220, 69);
+  }

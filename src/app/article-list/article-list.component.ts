@@ -31,6 +31,9 @@ export class ArticleListComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   l! :any; 
+  itemsPerPage = 5; 
+  currentPage = 1;
+  mathUtil = Math;
 
   constructor(private articleService: ArticlesService,private _snackBar: MatSnackBar) {}
 
@@ -40,7 +43,7 @@ export class ArticleListComponent implements OnInit {
 
   getArticles() {
     this.articleService.getArticles().subscribe((data) => {
-      this.AllArticles = data.articles.slice(20, 40);
+      this.AllArticles = data.articles;
       this.filteredArticles = this.AllArticles
     });
     
@@ -115,14 +118,11 @@ export class ArticleListComponent implements OnInit {
     });
   }
 
-  itemsPerPage = 5; 
-  currentPage = 1;
-
   changePage(newPage: number) {
     this.currentPage = newPage;
   }
  
-
+ 
 }
 
 

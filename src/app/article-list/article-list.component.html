@@ -106,9 +106,9 @@
                 </div>
                 <div class="pagination">
                     
-                    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1"><mat-icon>fast_rewind</mat-icon></button>
-                    <span>Page {{ currentPage }} sur {{ filteredArticles.length / itemsPerPage }}</span>
-                    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === (filteredArticles.length / itemsPerPage)"><mat-icon >fast_forward</mat-icon></button>
+                    <button class="btn btn1" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1"><mat-icon>fast_rewind</mat-icon></button>
+                    <span style="margin-top:8px;color:#555"> &ensp;Page {{ currentPage }} sur {{mathUtil.ceil( filteredArticles.length / itemsPerPage) }} &ensp;</span>
+                    <button class="btn btn1" (click)="changePage(currentPage + 1)" [disabled]="currentPage === (mathUtil.ceil(filteredArticles.length / itemsPerPage))"><mat-icon >fast_forward</mat-icon></button>
                 </div>
             </div>
 
